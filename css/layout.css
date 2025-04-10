@@ -53,8 +53,9 @@ body::after{
 
 /* Main____________________________________________________ */
 main{
-  /* border: 1px solid #000; */
-  background: radial-gradient(ellipse 70% 70% at center, #0D0D0D 80%, #0f0);
+  /* border: 1px solid red; */
+  /* background: radial-gradient(ellipse 70% 70% at center, #0D0D0D 80%, #0f0); */
+  background: radial-gradient(ellipse 70% 70% at center, rgba(0,0,0,0), rgba(13,13,13,1) 70%), url(../image/IDENTITY-SELF-LOVE.jpg) no-repeat center top 10%/cover fixed;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -62,7 +63,7 @@ main{
   position: relative;
 }
   
-main:before{
+/* main:before{
   content: '';
   position: absolute;
   width: 100%;
@@ -74,17 +75,27 @@ main:before{
 }
 main:hover:before{
   opacity: 1;
+} */
+
+@keyframes title-ani{
+  0%  {    transform: translateY(-30%) scale(2);  }
+  100%{    transform: translateY() scale();  }
 }
-  
+
 main h1{
   /* border: 1px solid #fff; */
   font-family: AliceInWonderland;
   font-size: 300px;
+  transform-origin: bottom;
   color: #0f0;
   /* text-shadow: 0 0 30px #0f0; */
   position: relative;
   z-index: 10;
   padding: 0 35px;
+  /* transition: 1s; */
+  /* transition-delay: 0.5s; */
+  animation: title-ani 1s linear;
+  animation-fill-mode: both;
 }
   
 main h1:before{
@@ -218,6 +229,12 @@ h2{
 }
 
 #story{
+  /* border: 1px solid blue; */
+  display: flex;
+  align-items: center;
+  height: 700px;
+}
+#story .center{
   /* border: 1px solid blue; */
   display: flex;
   height: 500px;
@@ -462,6 +479,7 @@ tbody tr:hover{
 #number{
   /* border: 1px solid blue; */
   height: calc(100vh - 100px);
+  margin: 200px 0;
   position: relative;
 }
 #number h2{
@@ -480,14 +498,30 @@ tbody tr:hover{
 .left-circle{
   position: absolute;
   background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: rgba(0, 255, 0, 0.4) 0px 2px 4px, rgba(0, 255, 0, 0.3) 0px 7px 13px -3px, rgba(0, 255, 0, 0.2) 0px -3px 0px inset, inset -5px -5px 10px rgba(255, 255, 255, 0.2);
+  /* box-shadow: rgba(0, 255, 0, 0.4) 0px 2px 4px, rgba(0, 255, 0, 0.3) 0px 7px 13px -3px, rgba(0, 255, 0, 0.2) 0px -3px 0px inset, inset -5px -5px 10px rgba(255, 255, 255, 0.2); */
   width: 500px;
   height: 500px;
   border-radius: 50%;
   top: 50%;
   left: 10%;
   transform: translateY(-50%);
-  /* z-index: 10; */
+  /* z-index: -1; */
+}
+.left-circle::after{
+  content: '';
+  /* border: 1px solid #fff; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: rgba(0, 255, 0, 0.4) 0px 2px 4px, rgba(0, 255, 0, 0.3) 0px 7px 13px -3px, rgba(0, 255, 0, 0.2) 0px -3px 0px inset, inset -5px -5px 10px rgba(255, 255, 255, 0.2);
+  animation: rotate-shadow 3s linear infinite;
+}
+@keyframes rotate-shadow {
+  0% { transform: rotate(0deg); }
+  100%   { transform: rotate(360deg); }
 }
 
 .left-circle label input{display: none;}
@@ -545,6 +579,7 @@ tbody tr:hover{
   top: 50%;
   transform: translate(-30%, -50%);
   cursor: pointer;
+  z-index: 20;
 }
 
 .right-circle{
@@ -553,13 +588,14 @@ tbody tr:hover{
   box-shadow: inset -80px -80px 120px rgba(255, 255, 255, 0.2),
               inset 80px 80px 120px rgba(0, 0, 0, 0.2),
               10px 10px 30px rgba(217, 156, 167,0.8);
-  width: 1000px;
-  height: 1000px;
+  width: 1500px;
+  height: 1500px;
   border-radius: 50%;
   top: 50%;
-  right: 5%;
+  right: -20%;
   transform: translateY(-50%);
   z-index: 2;
+  overflow: hidden;
 }
 
 .right-circle label {
@@ -567,35 +603,38 @@ tbody tr:hover{
   top: 47%;
   left: 50%;
   font-size: 38px;
-  transform: rotate(var(--angle)) translate(450px) rotate(calc(-1 * var(--angle)));
+  transform: rotate(var(--angle)) translate(700px) rotate(calc(-1 * var(--angle)));
   opacity: 1;
   cursor: pointer;
   text-shadow: 0 0 10px #fff;
+  z-index: 100;
 }
 
 .right-circle label span{  
   opacity: 1;
 }
 
-.right-circle label:nth-child(1){  --angle: 240deg;}
-.right-circle label:nth-child(2){  --angle: 210deg;}
+.right-circle label:nth-child(1){  --angle: 210deg;}
+.right-circle label:nth-child(2){  --angle: 195deg;}
 .right-circle label:nth-child(3){  --angle: 180deg;}
-.right-circle label:nth-child(4){  --angle: 150deg;}
-.right-circle label:nth-child(5){  --angle: 120deg;}
+.right-circle label:nth-child(4){  --angle: 165deg;}
+.right-circle label:nth-child(5){  --angle: 150deg;}
 
 .right-circle .lyric{
   /* border: 1px solid #000; */
   position: absolute;
-  width: 70%;
-  height: 60%;
-  left: 50%;
+  width: 60%;
+  height: calc(100vh - 300px);
+  left: 10%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(0, -40%);
   font-size: 14px;
   line-height: 2;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+  overflow: hidden;
   opacity: 0;
   text-shadow: 0 0 5px rgba(255, 255, 255, 1);
+  column-count: 2;
   pointer-events: none;
 }
 .right-circle .lyric em{
@@ -605,14 +644,6 @@ tbody tr:hover{
   padding-right: 10px;
   color: #0D0D0D;
 }
-
-/* #video iframe{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border:none;
-} */
 
 
 /* Hover Effect */
@@ -641,54 +672,52 @@ tbody tr:hover{
   100%{transform:rotate(var(--angle)) translate(200px) rotate(calc(-1 * var(--angle)));}
 }
 @keyframes rotate-l1-ani {
-  0% {transform: rotate(var(--angle)) translate(450px) rotate(calc(-1 * var(--angle)));}
-  40%, 60% {transform: rotate(calc(var(--angle) - 60deg)) translate(450px) rotate(calc(-1 * (var(--angle) - 60deg)));}
-  90% {transform: rotate(var(--angle)) translate(450px) rotate(calc(-1 * var(--angle)));}
-  100% {transform: rotate(0deg) translate(-50%, -400px) rotate(0deg);}
+  0% {transform: rotate(var(--angle)) translate(700px) rotate(calc(-1 * var(--angle)));}
+  40%, 60% {transform: rotate(calc(var(--angle) - 30deg)) translate(700px) rotate(calc(-1 * (var(--angle) - 30deg)));}
+  100% {transform: rotate(var(--angle)) translate(700px) rotate(calc(-1 * var(--angle)));}
 }
 @keyframes rotate-l2-ani {
-  0% {transform: rotate(var(--angle)) translate(450px) rotate(calc(-1 * var(--angle)));}
-  40%, 60% {transform: rotate(calc(var(--angle) - 30deg)) translate(450px) rotate(calc(-1 * (var(--angle) - 30deg)));}
-  90% {transform: rotate(calc(var(--angle) + 30deg)) translate(450px) rotate(calc(-1 * (var(--angle) + 30deg)));}
-  100% {transform: rotate(0deg) translate(-50%, -400px) rotate(0deg); }
+  0% {transform: rotate(var(--angle)) translate(700px) rotate(calc(-1 * var(--angle)));}
+  40%, 60% {transform: rotate(calc(var(--angle) - 15deg)) translate(700px) rotate(calc(-1 * (var(--angle) - 15deg)));}
+  100% {transform: rotate(calc(var(--angle) + 15deg)) translate(700px) rotate(calc(-1 * (var(--angle) + 15deg)));}
 }
 @keyframes rotate-l3-ani {
-  0%, 90% {transform: rotate(var(--angle)) translate(450px) rotate(calc(-1 * var(--angle)));}
-  100% {transform: rotate(0deg) translate(-50%, -400px) rotate(0deg); }
+  0%, 60% {transform: rotate(var(--angle)) translate(700px) rotate(calc(-1 * var(--angle)));}
+  100% {transform: rotate(calc(var(--angle) + 30deg)) translate(700px) rotate(calc(-1 * (var(--angle) + 30deg)));}
 }
 @keyframes rotate-l4-ani {
-  0% {transform: rotate(var(--angle)) translate(450px) rotate(calc(-1 * var(--angle)));}
-  40%, 60% {transform: rotate(calc(var(--angle) + 30deg)) translate(450px) rotate(calc(-1 * (var(--angle) + 30deg)));}
-  90% {transform: rotate(calc(var(--angle) + 90deg)) translate(450px) rotate(calc(-1 * (var(--angle) + 90deg)));}
-  100% {transform: rotate(0deg) translate(-50%, -400px) rotate(0deg); }
+  0% {transform: rotate(var(--angle)) translate(700px) rotate(calc(-1 * var(--angle)));}
+  40%, 60% {transform: rotate(calc(var(--angle) + 15deg)) translate(700px) rotate(calc(-1 * (var(--angle) + 15deg)));}
+  100% {transform: rotate(calc(var(--angle) + 45deg)) translate(700px) rotate(calc(-1 * (var(--angle) + 45deg)));}
 }
 @keyframes rotate-l5-ani {
-  0% {transform: rotate(var(--angle)) translate(450px) rotate(calc(-1 * var(--angle)));}
-  40%, 60% {transform: rotate(calc(var(--angle) + 60deg)) translate(450px) rotate(calc(-1 * (var(--angle) + 60deg)));}
-  90% {transform: rotate(calc(var(--angle) + 120deg)) translate(450px) rotate(calc(-1 * (var(--angle) + 120deg)));}
-  100% {transform: rotate(0deg) translate(-50%, -400px) rotate(0deg); }
+  0% {transform: rotate(var(--angle)) translate(700px) rotate(calc(-1 * var(--angle)));}
+  40%, 60% {transform: rotate(calc(var(--angle) + 30deg)) translate(700px) rotate(calc(-1 * (var(--angle) + 30deg)));}
+  100% {transform: rotate(calc(var(--angle) + 60deg)) translate(700px) rotate(calc(-1 * (var(--angle) + 60deg)));}
 }
 @keyframes fadeOut {
   0%,90% {opacity: 1;}
   100% {opacity: 0;}
 }
 
-.left-circle label:has(input:checked) span,
+.left-circle label.active,
 .left-circle label span:hover,
-.right-circle label span:hover{ 
+.right-circle label span:hover,
+.right-circle label.active{ 
   color: #BF6F7E;
   text-shadow: 0 0 5px #C724B1;
 }
 
-.left-circle:has(#n1:checked) ~ .right-circle label[for="n1"] span,
+/* .left-circle:has(#n1:checked) ~ .right-circle label[for="n1"] span,
 .left-circle:has(#n2:checked) ~ .right-circle label[for="n2"] span,
 .left-circle:has(#n3:checked) ~ .right-circle label[for="n3"] span,
 .left-circle:has(#n4:checked) ~ .right-circle label[for="n4"] span,
 .left-circle:has(#n5:checked) ~ .right-circle label[for="n5"] span{
   color: #BF6F7E;
   text-shadow: 0 0 5px #C724B1;
-} 
+}  */
 
+/* .right-circle label.fadeout */
 .left-circle:has(#n1:checked) ~ .right-circle label:not([for="n1"]) span,
 .left-circle:has(#n2:checked) ~ .right-circle label:not([for="n2"]) span,
 .left-circle:has(#n3:checked) ~ .right-circle label:not([for="n3"]) span,
@@ -698,11 +727,13 @@ tbody tr:hover{
   pointer-events: none;
 }
 
-.left-circle:has(#n1:checked) ~ .right-circle .lyric1,
+.right-circle .lyric.active
+/* .left-circle:has(#n1:checked) ~ .right-circle .lyric1,
 .left-circle:has(#n2:checked) ~ .right-circle .lyric2,
 .left-circle:has(#n3:checked) ~ .right-circle .lyric3,
 .left-circle:has(#n4:checked) ~ .right-circle .lyric4,
-.left-circle:has(#n5:checked) ~ .right-circle .lyric5{
+.left-circle:has(#n5:checked) ~ .right-circle .lyric5 */
+{
   opacity: 1;
   transition: 0.35s ease 1s;
   pointer-events: auto;
